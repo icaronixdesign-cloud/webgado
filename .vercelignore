@@ -1,0 +1,17 @@
+# Não sobe para a Vercel: banco local, caches, prints, senhas e arquivos de design.
+.data
+.next
+**/.next
+.turbo
+**/.turbo
+node_modules
+**/node_modules
+shots
+.taste-skill
+.impeccable
+.claude
+.env
+.env.*
+**/.env
+**/.env.*
+!apps/web/.env.example

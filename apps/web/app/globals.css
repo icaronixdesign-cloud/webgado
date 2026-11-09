@@ -1,0 +1,98 @@
+@import "tailwindcss";
+@import "@webgado/tokens/theme.css";
+/* Componentes na camada "components": os utilitários do Tailwind (md:w-auto etc.) ainda podem ajustá-los. */
+@import "./componentes.css" layer(components);
+@import "./paginas.css" layer(components);
+
+/* As faces vêm do next/font (layout.tsx); os tokens apontam para elas. */
+:root {
+  --fonte-titulo: var(--fonte-marcellus), Georgia, "Times New Roman", serif;
+  --fonte-texto: var(--fonte-atkinson), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --largura-conteudo: 1200px;
+  --margem-lateral: max(16px, env(safe-area-inset-left, 0px));
+  color-scheme: light;
+  accent-color: var(--cor-acao);
+  caret-color: var(--cor-acao);
+}
+
+@media (min-width: 768px) {
+  :root { --margem-lateral: 24px; }
+}
+@media (min-width: 1024px) {
+  :root { --margem-lateral: 32px; }
+}
+
+/*
+ * Estilos de elemento na camada "base": assim botões feitos de <a> (wg-btn) e utilitários
+ * como text-sobre-acao vencem a cor padrão dos links.
+ */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-padding-top: 96px;
+  }
+
+  body {
+    margin: 0;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: var(--fonte-texto);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--wg-pasto-100); color: var(--wg-pasto-900); }
+
+  h1, h2, h3 { font-family: var(--fonte-titulo); font-weight: 400; text-wrap: balance; margin: 0; }
+  p, li, dd { text-wrap: pretty; }
+
+  a { color: var(--cor-acao); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: none;
+    box-shadow: var(--sombra-foco);
+    border-radius: var(--raio-sm);
+  }
+
+  /* Barras de rolagem do jeito da marca. */
+  * { scrollbar-color: var(--wg-borda) transparent; }
+}
+
+@layer components {
+  .num { font-variant-numeric: tabular-nums; }
+
+  .wrap {
+    width: 100%;
+    max-width: calc(var(--largura-conteudo) + 2 * var(--margem-lateral));
+    margin-inline: auto;
+    padding-left: var(--margem-lateral);
+    padding-right: max(var(--margem-lateral), env(safe-area-inset-right, 0px));
+    box-sizing: border-box;
+  }
+
+  .t-display { font-family: var(--fonte-titulo); font-size: clamp(2.5rem, 1.9rem + 2.6vw, 3.5rem); line-height: 1.1; }
+  .t-h1 { font-family: var(--fonte-titulo); font-size: clamp(2.125rem, 1.8rem + 1.6vw, 2.75rem); line-height: 1.15; }
+  .t-h2 { font-family: var(--fonte-titulo); font-size: clamp(1.875rem, 1.7rem + 0.8vw, 2.25rem); line-height: 1.2; }
+  .t-h3 { font-family: var(--fonte-titulo); font-size: 1.75rem; line-height: 1.25; }
+  .t-abertura { font-size: clamp(1.25rem, 1.2rem + 0.2vw, 1.375rem); line-height: 1.55; }
+  .t-legenda { font-size: 1.375rem; font-weight: 600; line-height: 1.3; }
+  .t-pequeno { font-size: 1rem; line-height: 1.5; }
+  .texto-2 { color: var(--cor-texto-2); }
+}
+
+/* Entrada única do topo da Início (taste-skill: data-enter). Some com "reduzir movimento". */
+@media (prefers-reduced-motion: no-preference) {
+  [data-enter] > * {
+    animation: wg-entra 250ms var(--ease-out) both;
+  }
+  [data-enter] > *:nth-child(2) { animation-delay: 40ms; }
+  [data-enter] > *:nth-child(3) { animation-delay: 80ms; }
+  [data-enter] > *:nth-child(4) { animation-delay: 120ms; }
+}
+@keyframes wg-entra {
+  from { opacity: 0; transform: translateY(8px); }
+}

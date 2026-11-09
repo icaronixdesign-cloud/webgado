@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path fill="#18271A" d="M18 4h28a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H10a4 4 0 0 1-4-4V16A12 12 0 0 1 18 4Z"/>
+  <circle cx="32" cy="15" r="4.5" fill="#EBD4B6"/>
+  <text x="32" y="48" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="21" fill="#EBD4B6" letter-spacing="0.5">WG</text>
+</svg>

@@ -1,0 +1,244 @@
+/* Componentes do Web Gado. Os mesmos nomes de classe do Style Guide (Design System "Web Gado"). */
+
+.wg-ico { width: 24px; height: 24px; flex: none; }
+.wg-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Botao */
+.wg-btn {
+  font: inherit; font-size: 1.25rem; font-weight: 600; line-height: 1.2;
+  min-height: var(--alvo-acao); padding: 0 var(--esp-6);
+  border-radius: var(--raio-md); border: 2px solid var(--cor-acao);
+  background: var(--cor-acao); color: var(--cor-sobre-acao);
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--esp-2);
+  cursor: pointer; text-decoration: none; text-align: center;
+  transition: transform var(--dur-toque) var(--ease-out), background-color var(--dur-ui) ease, border-color var(--dur-ui) ease;
+  -webkit-user-select: none; user-select: none; touch-action: manipulation;
+}
+.wg-btn:active { transform: scale(.97); }
+.wg-btn--secundario { background: var(--cor-fundo); color: var(--cor-acao); }
+.wg-btn--largo { width: 100%; }
+.wg-btn--medio { min-height: var(--alvo-min); font-size: 1.125rem; padding: 0 var(--esp-4); }
+.wg-btn--neutro { background: var(--cor-fundo); color: var(--cor-texto); border-color: var(--cor-borda-campo); }
+.wg-btn[aria-busy="true"] { cursor: progress; }
+.wg-btn[data-copiado="true"] { background: var(--cor-ok); border-color: var(--cor-ok); color: var(--cor-sobre-acao); }
+@media (hover: hover) and (pointer: fine) {
+  .wg-btn:hover { background: var(--cor-acao-hover); border-color: var(--cor-acao-hover); }
+  .wg-btn--secundario:hover { background: var(--cor-escolhido); border-color: var(--cor-acao); }
+  .wg-btn--neutro:hover { background: var(--cor-fundo-2); border-color: var(--cor-texto-2); }
+}
+.wg-girando { width: 22px; height: 22px; border-radius: 50%; border: 3px solid currentColor; border-right-color: transparent; animation: wg-gira .7s linear infinite; }
+@keyframes wg-gira { to { transform: rotate(360deg); } }
+
+.wg-link { color: var(--cor-acao); font-size: 1.125rem; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
+@media (hover: hover) and (pointer: fine) { .wg-link:hover { text-decoration-thickness: 2px; } }
+
+/* BotaoWhatsApp */
+.wg-whats {
+  font: inherit; display: inline-flex; align-items: center; gap: var(--esp-2);
+  min-height: var(--alvo-min); padding: 0 20px 0 16px; border-radius: var(--raio-pilula);
+  background: var(--cor-whats); color: var(--cor-whats-tinta); border: 2px solid var(--cor-whats-borda);
+  font-size: 1.125rem; font-weight: 600; line-height: 1.2; text-decoration: none;
+  box-shadow: var(--sombra-flutuante); cursor: pointer;
+  transition: transform var(--dur-toque) var(--ease-out);
+}
+.wg-whats:active { transform: scale(.97); }
+.wg-whats:focus-visible { outline: none; box-shadow: var(--sombra-foco), var(--sombra-flutuante); }
+.wg-btn:focus-visible { outline: none; box-shadow: var(--sombra-foco); }
+.wg-whats .wg-ico { width: 26px; height: 26px; }
+.wg-whats--fixo {
+  position: fixed; z-index: 30;
+  right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: calc(max(16px, env(safe-area-inset-bottom, 0px)) + var(--folga-barra, 0px));
+  transition: transform var(--dur-toque) var(--ease-out), bottom var(--dur-ui) var(--ease-out);
+}
+.wg-whats__curto { display: none; }
+@media (max-width: 359px) { .wg-whats__longo { display: none; } .wg-whats__curto { display: inline; } }
+
+/* SeloTipo */
+.wg-selo { display: inline-flex; align-items: center; gap: var(--esp-2); background: var(--cor-destaque); color: var(--cor-sobre-acao); border-radius: var(--raio-brinco); padding: 6px 16px 6px 10px; font-size: 1.125rem; font-weight: 600; line-height: 1.3; white-space: nowrap; }
+.wg-selo::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--wg-bronze-200); flex: none; }
+.wg-selo--grande { font-size: 1.375rem; padding: 8px 20px 8px 12px; }
+.wg-selo--grande::before { width: 12px; height: 12px; }
+
+.wg-contador { position: absolute; top: -10px; right: -10px; min-width: 26px; height: 26px; padding: 0 6px; box-sizing: border-box; border-radius: 13px; background: var(--cor-acao); color: var(--cor-sobre-acao); border: 2px solid var(--cor-fundo); font-size: .9375rem; font-weight: 700; line-height: 22px; text-align: center; }
+
+/* Marca */
+.wg-marca { display: inline-flex; align-items: center; gap: var(--esp-3); color: var(--cor-texto); text-decoration: none; min-width: 0; }
+.wg-marca__nome { font-family: var(--fonte-titulo); font-size: 1.625rem; line-height: 1; display: block; white-space: nowrap; }
+@media (max-width: 380px) { .wg-marca__nome { font-size: 1.5rem; } .wg-marca__assina { font-size: .8125rem; } }
+.wg-marca__assina { display: block; font-size: .875rem; line-height: 1.3; color: var(--cor-texto-2); margin-top: 4px; }
+.wg-marca--faixa { color: var(--wg-bronze-200); }
+.wg-marca--faixa .wg-marca__assina { color: var(--wg-bronze-300); }
+.wg-simbolo { position: relative; width: 40px; height: 48px; flex: none; background: var(--cor-faixa); border-radius: var(--raio-brinco); color: var(--wg-bronze-200); font-family: var(--fonte-titulo); font-size: 1rem; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 7px; box-sizing: border-box; letter-spacing: .02em; }
+.wg-simbolo::before { content: ""; position: absolute; top: 8px; left: 50%; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: var(--wg-bronze-200); }
+.wg-marca--faixa .wg-simbolo { background: var(--wg-bronze-200); color: var(--cor-faixa); }
+.wg-marca--faixa .wg-simbolo::before { background: var(--cor-faixa); }
+
+/* ChipDisponibilidade */
+.wg-chip { display: inline-flex; align-items: center; gap: 6px; border-radius: var(--raio-sm); padding: 4px 12px 4px 10px; font-size: 1rem; font-weight: 600; line-height: 1.5; white-space: nowrap; }
+.wg-chip .wg-ico { width: 18px; height: 18px; }
+.wg-chip--ok { background: var(--cor-ok-fundo); color: var(--cor-ok); }
+.wg-chip--alerta { background: var(--cor-alerta-fundo); color: var(--cor-alerta); }
+.wg-chip--info { background: var(--cor-info-fundo); color: var(--cor-info); }
+.wg-chip--neutro { background: var(--cor-fundo-2); color: var(--cor-texto-2); }
+
+/* Selo grande no lugar da foto, enquanto não chegam fotos dos pais do tipo */
+.wg-tile { position: relative; display: flex; align-items: center; justify-content: center; background: var(--wg-pasto-100); overflow: hidden; width: 100%; height: 100%; }
+.wg-tile__brinco { container-type: inline-size; position: relative; width: 40%; aspect-ratio: 5 / 6; max-width: 168px; background: var(--cor-faixa); border-radius: 22% 22% 22% 6%; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 12%; box-sizing: border-box; color: var(--wg-bronze-200); font-family: var(--fonte-titulo); line-height: .8; }
+/* A letra mede metade do brinco e fica bem abaixo do furo, para o furo não parecer acento. */
+.wg-tile__brinco > span { font-size: 50cqi; }
+.wg-tile__brinco::before { content: ""; position: absolute; top: 10%; left: 50%; width: 10%; aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%; background: var(--wg-pasto-100); }
+
+/* CartaoTipo */
+.wg-cartao { display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: var(--esp-3) var(--esp-4); padding: var(--esp-3); background: var(--cor-fundo); border: 1px solid var(--cor-divisor); border-radius: var(--raio-md); color: inherit; text-decoration: none; transition: transform var(--dur-ui) var(--ease-out), border-color var(--dur-ui) ease; }
+.wg-cartao__foto { position: relative; aspect-ratio: 4 / 3; border-radius: var(--raio-sm); overflow: hidden; background: var(--cor-fundo-2); }
+.wg-cartao__foto img { object-fit: cover; transition: transform 300ms var(--ease-out); }
+.wg-cartao__lado { display: flex; flex-direction: column; align-items: flex-start; gap: var(--esp-2); min-width: 0; }
+.wg-cartao__apartir { font-size: 1rem; line-height: 1.3; color: var(--cor-texto-2); }
+.wg-cartao__apartir strong { display: block; font-size: 1.25rem; color: var(--cor-texto); }
+.wg-cartao__corpo { grid-column: 1 / -1; display: flex; flex-direction: column; gap: var(--esp-2); }
+.wg-cartao__titulo { font-family: var(--fonte-titulo); font-size: 1.75rem; line-height: 1.2; }
+.wg-cartao__resumo { margin: 0; color: var(--cor-texto-2); }
+.wg-cartao__pe { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--esp-2); margin-top: var(--esp-1); }
+.wg-cartao__ver { font-size: 1.25rem; font-weight: 600; color: var(--cor-acao); display: inline-flex; align-items: center; gap: 6px; }
+@media (min-width: 768px) {
+  .wg-cartao { grid-template-columns: 1fr; grid-template-rows: auto 1fr; padding: 0; overflow: hidden; }
+  .wg-cartao__foto { border-radius: 0; aspect-ratio: 4 / 3; }
+  .wg-cartao__lado { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: var(--esp-4) var(--esp-4) 0; }
+  .wg-cartao__apartir strong { display: inline; }
+  .wg-cartao__corpo { padding: 0 var(--esp-4) var(--esp-4); }
+}
+@media (hover: hover) and (pointer: fine) {
+  .wg-cartao:hover { transform: translateY(-2px); border-color: var(--cor-borda-campo); }
+  .wg-cartao:hover .wg-cartao__foto img { transform: scale(1.03); }
+}
+
+/* FichaLote */
+.wg-ficha { width: 100%; border-top: 2px solid var(--cor-texto); }
+.wg-ficha__cab { display: flex; justify-content: space-between; align-items: baseline; gap: var(--esp-4); padding: var(--esp-3) 0; border-bottom: 1px solid var(--wg-bronze-500); }
+.wg-ficha__cab span { font-size: 1rem; color: var(--cor-texto-2); }
+.wg-ficha dl { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); margin: 0; }
+.wg-ficha dt, .wg-ficha dd { margin: 0; padding: var(--esp-3) 0; border-bottom: 1px solid var(--cor-divisor); }
+.wg-ficha dt { color: var(--cor-texto-2); padding-right: var(--esp-4); }
+.wg-ficha dd { font-weight: 600; }
+.wg-ficha dd small { display: block; font-weight: 400; font-size: 1rem; color: var(--cor-alerta); }
+
+/* SeletorPacote */
+.wg-pacotes { border: 0; margin: 0; padding: 0; min-width: 0; }
+.wg-pacotes legend { font-size: 1.375rem; font-weight: 600; line-height: 1.3; margin: 0 0 var(--esp-3); padding: 0; }
+.wg-pacotes__grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--esp-3); }
+.wg-pacote { position: relative; display: block; cursor: pointer; }
+.wg-pacote input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.wg-pacote__caixa { display: flex; flex-direction: column; justify-content: center; min-height: 72px; padding: 10px 40px 10px 14px; border: 2px solid var(--cor-borda-campo); border-radius: var(--raio-md); background: var(--cor-fundo); transition: background-color var(--dur-ui) ease, border-color var(--dur-ui) ease; box-sizing: border-box; }
+.wg-pacote__qtd { font-size: 1.25rem; font-weight: 600; line-height: 1.25; }
+/* No celular estreito, "embriões" vai sempre para a linha de baixo: os 4 botões ficam da mesma altura. */
+@media (max-width: 430px) { .wg-pacote__qtd { max-width: 4.5em; } }
+.wg-pacote__valor { font-size: 1rem; color: var(--cor-texto-2); font-variant-numeric: tabular-nums; }
+.wg-pacote__check { position: absolute; top: 10px; right: 10px; width: 24px; height: 24px; border-radius: 50%; background: var(--cor-acao); color: var(--cor-sobre-acao); display: none; align-items: center; justify-content: center; }
+.wg-pacote__check .wg-ico { width: 16px; height: 16px; }
+.wg-pacote input:checked + .wg-pacote__caixa { border-color: var(--cor-acao); box-shadow: inset 0 0 0 1px var(--cor-acao); background: var(--cor-escolhido); }
+.wg-pacote input:checked + .wg-pacote__caixa .wg-pacote__qtd,
+.wg-pacote input:checked + .wg-pacote__caixa .wg-pacote__valor { color: var(--cor-acao); }
+.wg-pacote input:checked + .wg-pacote__caixa .wg-pacote__check { display: flex; }
+.wg-pacote input:focus-visible + .wg-pacote__caixa { box-shadow: var(--sombra-foco); }
+@media (hover: hover) and (pointer: fine) {
+  .wg-pacote:hover .wg-pacote__caixa { border-color: var(--cor-texto-2); }
+  .wg-pacote:hover input:checked + .wg-pacote__caixa { border-color: var(--cor-acao); }
+}
+
+/* BlocoPreco */
+.wg-preco { display: flex; flex-direction: column; gap: 2px; transition: opacity 160ms ease; }
+.wg-preco.wg-trocando { opacity: .35; }
+.wg-preco__rotulo { font-size: 1rem; color: var(--cor-texto-2); }
+.wg-preco__total { font-size: 2.5rem; font-weight: 600; line-height: 1.05; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.wg-preco__unit { font-size: 1.125rem; color: var(--cor-texto-2); font-variant-numeric: tabular-nums; }
+.wg-preco__total, .wg-pacote__valor, .wg-cartao__apartir strong, .wg-barra__preco strong { white-space: nowrap; }
+.wg-preco__economia { font-size: 1.125rem; font-weight: 600; color: var(--cor-ok); }
+@media (min-width: 768px) { .wg-preco__total { font-size: 3rem; } }
+
+/* BarraCompra */
+.wg-barra {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 25;
+  display: flex; align-items: center; justify-content: space-between; gap: var(--esp-3);
+  padding: var(--esp-3) max(16px, env(safe-area-inset-right, 0px)) calc(var(--esp-3) + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  background: var(--cor-fundo); border-top: 1px solid var(--cor-divisor); box-shadow: var(--sombra-flutuante);
+  transition: opacity var(--dur-ui) ease, visibility var(--dur-ui);
+}
+.wg-barra[data-visivel="false"] { opacity: 0; visibility: hidden; }
+.wg-barra__preco { line-height: 1.2; font-variant-numeric: tabular-nums; min-width: 0; }
+.wg-barra__preco strong { display: block; font-size: 1.5rem; font-weight: 600; }
+.wg-barra__preco span { font-size: 1rem; color: var(--cor-texto-2); }
+.wg-barra .wg-btn { padding: 0 var(--esp-4); flex: none; }
+@media (min-width: 1024px) { .wg-barra { display: none; } }
+
+/* CampoFormulario */
+.wg-campo { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.wg-campo label { font-size: 1.25rem; font-weight: 600; line-height: 1.3; }
+.wg-campo__opcional { font-weight: 400; font-size: 1.125rem; color: var(--cor-texto-2); }
+.wg-campo input, .wg-campo select, .wg-campo textarea {
+  font: inherit; font-size: 1.25rem; min-height: var(--alvo-min); padding: 0 var(--esp-4);
+  border: 2px solid var(--cor-borda-campo); border-radius: var(--raio-md);
+  background: var(--cor-fundo); color: var(--cor-texto); width: 100%; box-sizing: border-box; min-width: 0;
+}
+.wg-campo textarea { padding: var(--esp-3) var(--esp-4); min-height: 112px; line-height: 1.5; }
+.wg-campo select { padding-right: var(--esp-2); }
+.wg-campo input::placeholder { color: var(--cor-texto-3); }
+.wg-campo__ajuda { margin: 0; font-size: 1rem; color: var(--cor-texto-2); }
+.wg-campo--erro input, .wg-campo--erro select { border-color: var(--cor-erro); box-shadow: inset 0 0 0 1px var(--cor-erro); }
+.wg-campo__erro { display: flex; align-items: flex-start; gap: 6px; margin: 0; font-size: 1.125rem; font-weight: 600; color: var(--cor-erro); }
+.wg-campo__erro .wg-ico { width: 22px; height: 22px; margin-top: 2px; }
+.wg-marcar { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: var(--esp-3); align-items: start; min-height: var(--alvo-min); cursor: pointer; }
+.wg-marcar input { width: 28px; height: 28px; margin: 2px 0 0; }
+
+/* IndicadorPassos */
+.wg-passos { display: flex; flex-direction: column; gap: var(--esp-2); }
+.wg-passos__texto { margin: 0; font-size: 1.125rem; font-weight: 600; }
+.wg-passos__lista { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; list-style: none; margin: 0; padding: 0; }
+.wg-passos__lista li { display: flex; flex-direction: column; gap: 6px; font-size: 1rem; line-height: 1.4; color: var(--cor-texto-2); }
+.wg-passos__lista li::before { content: ""; height: 8px; border-radius: 4px; background: var(--cor-divisor); }
+.wg-passos__lista li[data-estado="feito"]::before, .wg-passos__lista li[data-estado="atual"]::before { background: var(--cor-acao); }
+.wg-passos__lista li[data-estado="atual"] { color: var(--cor-texto); font-weight: 600; }
+
+/* LinhaTempo */
+.wg-linha { list-style: none; margin: 0; padding: 0; }
+.wg-linha li { position: relative; display: grid; grid-template-columns: 32px minmax(0, 1fr); column-gap: var(--esp-3); padding-bottom: var(--esp-6); }
+.wg-linha li:last-child { padding-bottom: 0; }
+.wg-linha li::before { content: ""; position: absolute; left: 15px; top: 34px; bottom: 2px; width: 2px; background: var(--cor-divisor); }
+.wg-linha li:last-child::before { display: none; }
+.wg-linha li[data-estado="feito"]::before { background: var(--cor-ok); }
+.wg-linha__marca { width: 32px; height: 32px; box-sizing: border-box; border-radius: 50%; border: 2px solid var(--cor-borda-campo); background: var(--cor-fundo); display: flex; align-items: center; justify-content: center; }
+.wg-linha__marca .wg-ico { width: 18px; height: 18px; }
+[data-estado="feito"] .wg-linha__marca { background: var(--cor-ok); border-color: var(--cor-ok); color: var(--cor-sobre-acao); }
+[data-estado="atual"] .wg-linha__marca { border: 3px solid var(--cor-acao); }
+[data-estado="atual"] .wg-linha__marca::after { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--cor-acao); }
+.wg-linha__titulo { margin: 3px 0 0; font-size: 1.25rem; font-weight: 600; line-height: 1.3; display: flex; flex-wrap: wrap; align-items: center; gap: var(--esp-2); }
+[data-estado="porvir"] .wg-linha__titulo { font-weight: 400; color: var(--cor-texto-2); }
+.wg-linha__data { margin: 0; font-size: 1rem; color: var(--cor-texto-2); }
+.wg-agora { font-size: 1rem; font-weight: 600; color: var(--cor-acao); background: var(--cor-escolhido); border-radius: var(--raio-sm); padding: 0 8px; }
+
+/* TelaConfirmacao */
+.wg-confirma { display: flex; flex-direction: column; align-items: flex-start; gap: var(--esp-4); width: 100%; max-width: 560px; }
+.wg-confirma__icone { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--cor-ok-fundo); color: var(--cor-ok); }
+.wg-confirma__icone .wg-ico { width: 34px; height: 34px; }
+.wg-confirma__numero { margin: 0; font-size: 1rem; color: var(--cor-texto-2); }
+.wg-confirma__numero strong { display: block; font-size: 3rem; font-weight: 600; line-height: 1.1; color: var(--cor-texto); font-variant-numeric: tabular-nums; }
+.wg-confirma__proximo { margin: 0; padding-left: 1.4em; display: flex; flex-direction: column; gap: var(--esp-2); }
+.wg-confirma__acoes { display: flex; flex-direction: column; gap: var(--esp-3); width: 100%; }
+
+/* Aviso */
+.wg-aviso { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: var(--esp-3); align-items: start; padding: var(--esp-4); border-radius: var(--raio-md); font-size: 1.125rem; line-height: 1.5; }
+.wg-aviso p { margin: 0; }
+.wg-aviso strong { display: block; }
+.wg-aviso .wg-ico { margin-top: 1px; }
+.wg-aviso--ok { background: var(--cor-ok-fundo); color: var(--cor-ok); }
+.wg-aviso--alerta { background: var(--cor-alerta-fundo); color: var(--cor-alerta); }
+.wg-aviso--erro { background: var(--cor-erro-fundo); color: var(--cor-erro); }
+.wg-aviso--info { background: var(--cor-info-fundo); color: var(--cor-info); }
+.wg-aviso a { color: inherit; font-weight: 600; }
+
+@media (prefers-reduced-motion: reduce) {
+  .wg-btn, .wg-whats, .wg-cartao, .wg-cartao__foto img { transition: opacity var(--dur-ui) ease; }
+  .wg-btn:active, .wg-whats:active { transform: none; }
+  .wg-girando { animation-duration: 2.4s; }
+  .wg-cartao:hover, .wg-cartao:hover .wg-cartao__foto img { transform: none !important; }
+}

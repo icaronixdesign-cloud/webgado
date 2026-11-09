@@ -1,0 +1,20 @@
+{
+  "name": "@webgado/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Regras do Web Gado: preços, pedidos, WhatsApp e validações. Usado pelo site e pelo app.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "vitest": "^5.1.0"
+  }
+}

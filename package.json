@@ -1,0 +1,32 @@
+{
+  "name": "webgado",
+  "private": true,
+  "description": "Web Gado: vitrine de embriões Girolando da Girolando Passos",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @webgado/web",
+    "build": "turbo run build",
+    "start": "npm run start -w @webgado/web",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "db:generate": "npm run generate -w @webgado/db",
+    "db:migrate": "npm run migrate -w @webgado/db",
+    "db:seed": "npm run seed -w @webgado/db",
+    "db:reset": "npm run reset -w @webgado/db",
+    "tokens": "npm run build -w @webgado/tokens"
+  },
+  "devDependencies": {
+    "turbo": "^2.11.10",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "npm@11.17.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "postgres": "^3.4.9"
+  }
+}

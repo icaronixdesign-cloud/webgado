@@ -1,0 +1,14 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"],
+      "env": ["DATABASE_URL", "WEBGADO_DEMO", "PAINEL_SENHA", "PAINEL_SEGREDO", "NEXT_PUBLIC_SITE_URL"]
+    },
+    "test": {},
+    "typecheck": {
+      "dependsOn": ["^typecheck"]
+    }
+  }
+}

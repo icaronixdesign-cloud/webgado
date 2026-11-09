@@ -1,0 +1,27 @@
+node_modules/
+.next/
+out/
+dist/
+!packages/tokens/dist/
+.turbo/
+*.tsbuildinfo
+next-env.d.ts
+
+# banco local (PGlite) e variáveis
+.data/
+.env
+.env.local
+.env.*.local
+
+# ferramentas de design (mantém só o que é do projeto)
+.impeccable/questions/
+.impeccable/mocks/
+.impeccable/review/
+.taste-skill/chrome-*
+shots/
+
+.DS_Store
+Thumbs.db
+
+.vercel
+.env*
