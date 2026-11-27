@@ -32,11 +32,11 @@ const chave = Symbol.for('webgado.banco');
 type GlobalComBanco = typeof globalThis & { [chave]?: Promise<Conexao> };
 
 /**
- * A string do banco: DATABASE_URL (Supabase copiado à mão) ou POSTGRES_URL (criada pela integração
- * Supabase da Vercel). Sem nenhuma das duas, o site usa o banco local embutido.
+ * A string do banco: DATABASE_URL (colada à mão), NEON_DATABASE_URL (criada pela integração Neon da
+ * Vercel) ou POSTGRES_URL (integração antiga do Supabase). Sem nenhuma, o site usa o banco local embutido.
  */
 export function urlDoBanco(): string | null {
-  return process.env.DATABASE_URL || process.env.POSTGRES_URL || null;
+  return process.env.DATABASE_URL || process.env.NEON_DATABASE_URL || process.env.POSTGRES_URL || null;
 }
 
 /** Tira da URL os parâmetros que só o painel do Supabase entende e decide o SSL. */

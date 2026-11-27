@@ -1,4 +1,4 @@
-// Aplica as migrações. Com DATABASE_URL ou POSTGRES_URL (Supabase), roda no build da Vercel;
+// Aplica as migrações. Com DATABASE_URL, NEON_DATABASE_URL ou POSTGRES_URL, roda no build da Vercel;
 // sem elas, no banco local (PGlite).
 import { banco, fecharBanco, pastaMigracoes, urlDoBanco } from '../cliente';
 
@@ -16,7 +16,7 @@ async function principal() {
     await migrate(await banco(), { migrationsFolder: pastaMigracoes() });
     console.log('Migrações aplicadas no Postgres.');
   } else if (process.env.VERCEL) {
-    throw new Error('Falta o banco: conecte o Supabase ao projeto na Vercel (aba Storage) ou defina DATABASE_URL.');
+    throw new Error('Falta o banco: conecte o Neon ao projeto na Vercel (aba Storage) ou defina DATABASE_URL.');
   } else {
     await banco(); // o PGlite migra ao abrir
     console.log('Migrações aplicadas no banco local (.data/pglite).');

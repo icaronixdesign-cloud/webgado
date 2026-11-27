@@ -4,7 +4,7 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**"],
-      "env": ["DATABASE_URL", "WEBGADO_DEMO", "PAINEL_SENHA", "PAINEL_SEGREDO", "NEXT_PUBLIC_SITE_URL"]
+      "env": ["DATABASE_URL", "NEON_DATABASE_URL", "POSTGRES_URL", "WEBGADO_DEMO", "PAINEL_SENHA", "PAINEL_SEGREDO", "NEXT_PUBLIC_SITE_URL"]
     },
     "test": {},
     "typecheck": {
